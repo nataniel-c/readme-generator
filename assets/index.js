@@ -5,8 +5,6 @@ const fs = require('fs');
 
 
 // TODO: Create an array of questions for user input
-// Readme requires:
-// Description
 //
 const questions = [
     'What is the title for your project?',
@@ -15,21 +13,27 @@ const questions = [
     'Please enter usage information for your project:',
     'Please enter the contribution guidelines for your project:',
     'Please enter test instructions for your application:',
-    'What license would you like to attribute to your project?'
+    'What license would you like to attribute to your project?',
+    'What is your GitHub username?',
+    'Final question: what is your email address?'
 ];
 
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.appendFile(fileName, data, (err) =>
+    
+    readmeData= ``
+    fs.appendFile(fileName, data, 
+        (err) => {
     err ? console.error(err) : console.log('Data written to README')
-);
+        }
+    );
 
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer
+inquirer
   .prompt([
     {
       type: 'input',
@@ -62,17 +66,26 @@ function init() {
         name: 'test',
     },
     {
-        type: 'input',
+        type: 'list',
         message: questions[7],
         name: 'license',
+        choices: ['Apache', 'Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'IBM', 'MIT', 'Mozilla' , 'Open Data Commons', 'Perl', 'Zlib', 'NONE']
+    },
+    {
+        type: 'input',
+        message: questions[8],
+        name: 'username',
+    },
+    {
+        type: 'input',
+        message: questions[9],
+        name: 'email',
     }
-
   ])
-  .then((response) => 
-        writeToFile('README.md', response);
-        generateMarkdown(response.license);
-        // : console.log('Please fill out all required information.')
-    
+  .then((response) => {
+    markdown = generateMarkdown(response);
+    writeToFile('README.md', markdown);
+  }
   );
 }
 
