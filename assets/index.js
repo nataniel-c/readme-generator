@@ -1,5 +1,5 @@
 // TODO: Include packages needed for this application
-const inquirer = require('inquirer@8.2.4');
+const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 
@@ -7,7 +7,7 @@ const fs = require('fs');
 // TODO: Create an array of questions for user input
 //
 const questions = [
-    'What is the title for your project?',
+    'Welcome to the README generator.\nWhat is the title for your project?',
     'Please enter a short description for your project:',
     'Please enter installation instructions for your project:',
     'Please enter usage information for your project:',
@@ -21,11 +21,9 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    
-    readmeData= ``
     fs.appendFile(fileName, data, 
         (err) => {
-    err ? console.error(err) : console.log('Data written to README')
+    err ? console.error(err) : console.log('Data written to README.md')
         }
     );
 
@@ -37,48 +35,48 @@ inquirer
   .prompt([
     {
       type: 'input',
-      message: questions[1],
+      message: questions[0],
       name: 'title',
     },
     {
         type: 'input',
-        message: questions[2],
+        message: questions[1],
         name: 'description',
     },
     {
         type: 'input',
-        message: questions[3],
+        message: questions[2],
         name: 'installation',
     },
     {
         type: 'input',
-        message: questions[4],
+        message: questions[3],
         name: 'usage',
     },
     {
         type: 'input',
-        message: questions[5],
+        message: questions[4],
         name: 'contribution',
     },
     {
         type: 'input',
-        message: questions[6],
+        message: questions[5],
         name: 'test',
     },
     {
         type: 'list',
-        message: questions[7],
+        message: questions[6],
         name: 'license',
         choices: ['Apache', 'Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'IBM', 'MIT', 'Mozilla' , 'Open Data Commons', 'Perl', 'Zlib', 'NONE']
     },
     {
         type: 'input',
-        message: questions[8],
+        message: questions[7],
         name: 'username',
     },
     {
         type: 'input',
-        message: questions[9],
+        message: questions[8],
         name: 'email',
     }
   ])

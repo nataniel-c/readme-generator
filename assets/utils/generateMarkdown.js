@@ -69,21 +69,16 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   if(license) { 
     let sectionText = 
-      `\n\n## License
-      \n
-      \nCopyright 2023
-      \nLicensed under the ${license} License (the \"License\")
-      \nyou may not use this file except in compliance with the License.
-      \nYou may obtain a copy of the License at 
-      \n
-      \n` + renderLicenseLink(license) + `
-      \n
-      \nUnless required by applicable law or agreed to in writing, software 
-      \ndistributed under the License is distributed on an \"AS IS\" BASIS,
-      \nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-      \nSee the License for the specific language governing permissions and
-      \nlimitations under the License.
-      \n
+      `\n## License
+      
+      Copyright 2023
+      Licensed under the ${license} License (the \"License\") you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at 
+      
+      ` + renderLicenseLink(license) + `
+      
+      Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and limitations under the License.
       \n`;
     return sectionText;
   } else {
@@ -96,39 +91,39 @@ function generateMarkdown(data) {
   const badge = renderLicenseBadge(data.license);
   const licenseSection = renderLicenseSection(data.license);
   return `# ${data.title} 
-  \n
-  \n ${badge}
-  \n
-  \n## Description
-  \n
-  \n${data.description}
-  \n
-  \n## Table of Contents
-  \n
-  \n- [Installation](#installation)
-  \n- [Usage](#usage)
-  \n- [Contributing](#contributing)
-  \n- [License](#license)
-  \n
-  \n## Installation
-  \n
-  \n${data.installation}
-  \n
-  \n## Usage
-  \n
-  \n${data.usage}
-  \n
-  \n## Contributing
-  \n
-  \n${data.contribution}
-  \n${licenseSection}
-  \n## Tests
-  \n
-  \n${data.test}
-  \n
-  \n## Questions
-  \n
-  \n${data.username}  
+  
+  ${badge}
+  
+  ## Description
+  
+  ${data.description}
+  
+  ## Table of Contents
+  
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
+  
+  ## Installation
+  
+  ${data.installation}
+  
+  ## Usage
+  
+  ${data.usage}
+  
+  ## Contributing
+  
+  ${data.contribution}
+  ${licenseSection}
+  ## Tests
+  
+  ${data.test}
+  
+  ## Questions
+  
+  ${data.username}  
 `;
 }
 
