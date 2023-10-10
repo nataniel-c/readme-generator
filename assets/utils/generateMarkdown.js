@@ -123,7 +123,9 @@ function generateMarkdown(data) {
   
   ## Questions
   
-  ${data.username}  
+  For any questions, please contact me:
+  - @ ${data.username} on GitHub
+  - Email to ${data.email}  
 `;
 }
 
